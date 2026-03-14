@@ -5,33 +5,34 @@ pipeline {
         maven 'maven-3.9.9'
     }
 
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/sunithabamidi/orangehrm.git'
+    stages {
+    stage('Checkout') {
+                steps {
+                    git branch: 'main', url: 'https://github.com/sunithabamidi/orangehrm.git'
+                }
             }
-        }
 
-        stage('Build') {
-            steps {
-                bat 'mvn clean install'
+            stage('Build') {
+                steps {
+                    bat 'mvn clean install'
+                }
             }
-        }
 
-        stage('Test') {
-            steps {
-                bat 'mvn test'
+            stage('Test') {
+                steps {
+                    bat 'mvn test'
+                }
             }
-        }
 
-        stage('Reports') {
-            steps {
-                publishHTML(target: [
-                    reportDir: 'src/test/resources/ExtentReports',
-                    reportFiles: 'ExtentReport.html',
-                    reportName: 'Extent Report'
-                ])
+            stage('Reports') {
+                steps {
+                    publishHTML(target: [
+                        reportDir: 'src/test/resources/ExtentReports',
+                        reportFiles: 'ExtentReport.html',
+                        reportName: 'Extent Report'
+                    ])
+                }
             }
-        }
     }
 
     post {
@@ -88,4 +89,5 @@ pipeline {
                 attachLog: true
             )
         }
+    }
 }
