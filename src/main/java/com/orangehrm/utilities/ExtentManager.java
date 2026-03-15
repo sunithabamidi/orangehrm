@@ -156,7 +156,7 @@ public class ExtentManager {
             String screenshotBase64 = takeScreenshot(getTestName());
             getTest().info(message, createScreenCaptureFromBase64String(screenshotBase64).build());
         } catch (Exception e) {
-            getTest().fail("Failed tp attach screenshot: "+message);
+            getTest().fail("Failed to attach screenshot: "+message);
             throw new RuntimeException(e);
         }
 
