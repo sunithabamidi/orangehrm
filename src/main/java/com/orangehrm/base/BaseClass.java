@@ -77,7 +77,7 @@ public class BaseClass {
                     ExtentManager.registerDriver(getDriver());
                 } else if (browser.equalsIgnoreCase("firefox")) {
                     FirefoxOptions options = new FirefoxOptions();
-                    options.addArguments("-headless");
+                    options.addArguments("--headless");
                     driver.set(new RemoteWebDriver(new URL(gridURL), options));
                     ExtentManager.registerDriver(getDriver());
                 } else if (browser.equalsIgnoreCase("edge")) {
@@ -117,7 +117,7 @@ public class BaseClass {
                 driver.set(new FirefoxDriver(options));
                 log.info("firefox Driver instance is created: " + Thread.currentThread().getId());
                 ExtentManager.registerDriver(getDriver());
-            } else if (browser.equalsIgnoreCase("MicrosoftEdge")) {
+            } else if (browser.equalsIgnoreCase("edge")) {
                 EdgeOptions options = new EdgeOptions();
 //            options.addArguments("--headless"); // Run Chrome in headless mode
 //            options.addArguments("--disable-gpu"); // Disable GPU for headless mode
