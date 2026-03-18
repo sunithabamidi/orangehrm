@@ -107,9 +107,9 @@ public class BaseClass {
                 ExtentManager.registerDriver(getDriver());
             } else if (browser.equalsIgnoreCase("firefox")) {
                 FirefoxOptions options = new FirefoxOptions();
-//            options.addArguments("--headless"); // Run Chrome in headless mode
-//            options.addArguments("--disable-gpu"); // Disable GPU for headless mode
-//            options.addArguments("--window-size=1920,1080"); // Set window size
+                options.addArguments("--headless"); // Run firefox in headless mode
+                options.addArguments("--disable-gpu"); // Disable GPU for headless mode
+                options.addArguments("--window-size=1920,1080"); // Set window size
                 options.addArguments("--disable-notifications"); // Disable browser notifications
                 options.addArguments("--no-sandbox"); // Required for some CI environments like Jenkins
                 options.addArguments("--disable-dev-shm-usage"); // Resolve issues in resource-limited environments
@@ -119,9 +119,9 @@ public class BaseClass {
                 ExtentManager.registerDriver(getDriver());
             } else if (browser.equalsIgnoreCase("edge")) {
                 EdgeOptions options = new EdgeOptions();
-//            options.addArguments("--headless"); // Run Chrome in headless mode
-//            options.addArguments("--disable-gpu"); // Disable GPU for headless mode
-//            options.addArguments("--window-size=1920,1080"); // Set window size
+                options.addArguments("--headless=new"); // Run edge in headless mode
+                options.addArguments("--disable-gpu"); // Disable GPU for headless mode
+                options.addArguments("--window-size=1920,1080"); // Set window size
                 options.addArguments("--disable-notifications"); // Disable browser notifications
                 options.addArguments("--no-sandbox"); // Required for some CI environments like Jenkins
                 options.addArguments("--disable-dev-shm-usage"); // Resolve issues in resource-limited environments
