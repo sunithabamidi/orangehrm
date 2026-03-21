@@ -5,8 +5,24 @@ pipeline {
         maven 'maven-3.9.9'
     }
 
+    environment {
+            COMPOSE_PATH = "${WORKSPACE}/docker"
+            SELENIUM_GRID = "true"
+        }
+
     stages {
-    stage('Checkout') {
+            stage('Start Selenium Grid via Docker Compose') {
+                        steps {
+                            script {
+                                echo "Starting Selenium Grid with Docker Compose..."
+                                bat "docker compose -f ${COMPOSE_PATH}\\docker-compose.yml up -d"
+                                echo "Waiting for Selenium Grid to be ready..."
+                                sleep 30 // Add a wait if needed
+                            }
+                        }
+                    }
+
+            stage('Checkout') {
                 steps {
                     git branch: 'main', url: 'https://github.com/sunithabamidi/orangehrm.git'
                 }
@@ -23,6 +39,15 @@ pipeline {
                     bat 'mvn test'
                 }
             }
+
+            stage('Stop Selenium Grid') {
+                        steps {
+                            script {
+                                echo "Stopping Selenium Grid..."
+                                bat "docker compose -f ${COMPOSE_PATH}\\docker-compose.yml down"
+                            }
+                        }
+                    }
 
             stage('Reports') {
                 steps {

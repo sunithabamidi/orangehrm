@@ -82,13 +82,13 @@ public class BaseClass {
                     ExtentManager.registerDriver(getDriver());
                 } else if (browser.equalsIgnoreCase("edge")) {
                     EdgeOptions options = new EdgeOptions();
-                    options.addArguments("--headless=new", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
+                    options.addArguments("--headless=new", "--window-size=1920,1080", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
                     driver.set(new RemoteWebDriver(new URL(gridURL), options));
                     ExtentManager.registerDriver(getDriver());
                 } else {
                     throw new IllegalArgumentException("Browser Not Supported: " + browser);
                 }
-                log.info("RemoteWebDriver instance created for Grid in headless mode");
+                log.info("RemoteWebDriver instance created for Grid in headless mode: "+ browser);
             } catch (MalformedURLException e) {
                 throw new RuntimeException("Invalid Grid URL", e);
             }
