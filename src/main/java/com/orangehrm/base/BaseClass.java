@@ -82,7 +82,7 @@ public class BaseClass {
                     ExtentManager.registerDriver(getDriver());
                 } else if (browser.equalsIgnoreCase("edge")) {
                     EdgeOptions options = new EdgeOptions();
-                    options.addArguments("--headless=new", "--window-size=1920,1080", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
+                    options.addArguments("--headless", "--window-size=1920,1080", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
                     driver.set(new RemoteWebDriver(new URL(gridURL), options));
                     ExtentManager.registerDriver(getDriver());
                 } else {
