@@ -72,7 +72,7 @@ public class BaseClass {
             try {
                 if (browser.equalsIgnoreCase("chrome")) {
                     ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1080");
+                    options.addArguments( "--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "--window-size=1920,1080");
                     driver.set(new RemoteWebDriver(new URL(gridURL), options));
                     ExtentManager.registerDriver(getDriver());
                 } else if (browser.equalsIgnoreCase("firefox")) {
@@ -82,7 +82,7 @@ public class BaseClass {
                     ExtentManager.registerDriver(getDriver());
                 } else if (browser.equalsIgnoreCase("edge")) {
                     EdgeOptions options = new EdgeOptions();
-                    options.addArguments("--headless", "--window-size=1920,1080", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
+                    options.addArguments( "--headless", "--window-size=1920,1080", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
                     driver.set(new RemoteWebDriver(new URL(gridURL), options));
                     ExtentManager.registerDriver(getDriver());
                 } else {
